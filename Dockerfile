@@ -11,6 +11,8 @@ RUN apt-get -y install curl
 RUN curl -sL https://deb.nodesource.com/setup_0.12 |  bash -
 RUN apt-get install -y nodejs
 
+#Install maven
+RUN apt-get install -y maven
 
 #Install npm
 RUN curl -L https://npmjs.com/install.sh | sh
