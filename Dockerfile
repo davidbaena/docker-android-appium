@@ -10,10 +10,6 @@ RUN apt-get -y install curl build-essential
 #Install maven
 RUN apt-get install -y maven
 
-#Install node 0.12
-#RUN curl -sL https://deb.nodesource.com/setup_0.12 |  bash -
-#RUN apt-get install -y nodejs
-
 USER jenkins
 WORKDIR /home/jenkins
 
@@ -21,15 +17,21 @@ RUN  mkdir .local && mkdir node
 RUN curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
 RUN ./configure --prefix=.local && make install
 
+ENV NODE_PATH=/home/jenkins/.local/lib/node_modules
+ENV PATH=/home/jenkins/.local/bin:$PATH
 
+USER root
+# Expose bin to default nodejs bin for sublime plugins
+RUN ln -s /home/jenkins/.local/bin/node  /usr/bin/nodejs
+RUN ln -s /home/jenkins/.local/lib/node_modules /usr/local/lib/
+
+
+USER jenkins
 #Install npm
-RUN curl -L https://npmjs.com/install.sh | sh
-
-#Install avm
-RUN npm install -g appium-version-manager
+RUN curl -O https://npmjs.com/install.sh | sh
+RUN npm install -g appium@${appium_version}
 
 #Install version of appium
-RUN avm ${appium_version}
+CMD appium
 
 EXPOSE 4723
-CMD /usr/local/avm/versions/${appium_version}/node_modules/appium/bin/appium.js
