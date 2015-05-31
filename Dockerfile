@@ -1,8 +1,6 @@
 FROM codetroopers/jenkins-slave-jdk8-android:22-22.0.1-x86
 
-MAINTAINER baena
-
-ENV appium_version 1.4.1
+MAINTAINER davidbaena
 
 RUN apt-get update
 RUN apt-get -y install curl build-essential
@@ -25,6 +23,8 @@ USER root
 RUN ln -s /home/jenkins/.local/bin/node  /usr/bin/nodejs
 RUN ln -s /home/jenkins/.local/lib/node_modules /usr/local/lib/
 
+ENV appium_version 1.4.1
+ENV appium_args ""
 
 USER jenkins
 #Install npm
@@ -32,6 +32,4 @@ RUN curl -O https://npmjs.com/install.sh | sh
 RUN npm install -g appium@${appium_version}
 
 #Install version of appium
-CMD appium
-
-EXPOSE 4723
+CMD appium ${appium_args}
