@@ -22,8 +22,8 @@ Start 2 appium servers with diferents configurations. [Check appium Doc.](https:
 - '-U' UDID: the Appium bootstrap port
 
 ```
-$ docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb  -p 4723:4723 davidbaena/appium -e appium_args="-p 4723 -bp 2251 -U 32456"
+$ docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb -e appium_args="-p 4723 -bp 2251 -U 32456"  -p 4723:4723 davidbaena/appium
 
-$ docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb  -p 4724:4724 davidbaena/appium -e appium_args="-p 4724 -bp 2252 -U 43364"
+$ docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb -e appium_args="-p 4724 -bp 2252 -U 43364" -p 4724:4724 davidbaena/appium
 
 ```
