@@ -24,7 +24,7 @@ USER root
 RUN ln -s /home/jenkins/.local/bin/node  /usr/bin/nodejs
 RUN ln -s /home/jenkins/.local/lib/node_modules /usr/local/lib/
 
-ENV appium_version 1.4.1
+ENV appium_version 1.4.2
 ENV appium_args "-p 4723"
 
 USER jenkins
