@@ -34,10 +34,18 @@ ENV appium_version 1.4.6
 #Install appium
 RUN npm install -g appium@${appium_version}
 
+ADD files/insecure_shared_adbkey /.android/adbkey
+ADD files/insecure_shared_adbkey.pub /.android/adbkey.pub
+
+
 USER root
 RUN apt-get -y install supervisor
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+ADD files/insecure_shared_adbkey /.android/adbkey
+ADD files/insecure_shared_adbkey.pub /.android/adbkey.pub
+
 
 EXPOSE 22
 CMD ["/usr/bin/supervisord"]
