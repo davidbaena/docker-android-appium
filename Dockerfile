@@ -37,7 +37,6 @@ RUN npm install -g appium@${appium_version}
 ADD files/insecure_shared_adbkey /home/jenkins/.android/adbkey
 ADD files/insecure_shared_adbkey.pub /home/jenkins/.android/adbkey.pub
 
-
 USER root
 RUN apt-get -y install supervisor
 RUN mkdir -p /var/log/supervisor
