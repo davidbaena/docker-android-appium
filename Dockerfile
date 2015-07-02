@@ -30,7 +30,7 @@ USER jenkins
 #Install npm
 RUN curl -O https://npmjs.com/install.sh | sh
 
-ENV appium_version 1.4.6
+ENV appium_version 1.4.7
 #Install appium
 RUN npm install -g appium@${appium_version}
 
