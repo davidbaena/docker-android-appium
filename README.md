@@ -6,7 +6,7 @@ This container can be used as jenkins-slave for your automated tests.
 # Software included
 - Maven3
 - jdk8
-- appium 1.4.7
+- appium 1.4.10
 - android android-sdk_r24.1.2
 - android build-tools-22.0.1
 
