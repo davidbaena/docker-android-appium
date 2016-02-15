@@ -3,7 +3,7 @@ FROM codetroopers/jenkins-slave-jdk8-android:22-22.0.1-x86
 MAINTAINER davidbaena
 
 RUN apt-get update
-RUN apt-get -y install curl build-essential
+RUN apt-get -y install curl build-essential usbutils
 
 #Install maven
 RUN apt-get install -y maven
